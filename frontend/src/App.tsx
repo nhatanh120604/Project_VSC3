@@ -54,7 +54,7 @@ export default function App() {
       <div className="min-h-screen flex flex-col font-display bg-background-light dark:bg-background-dark text-[#111418] dark:text-white overflow-x-hidden">
         <header className="flex items-center justify-between whitespace-nowrap border-b border-solid border-[#e2e8f0] dark:border-[#1e293b] px-6 lg:px-10 py-4 bg-background-light dark:bg-background-dark z-20 relative">
           <div className="flex items-center gap-4">
-            <h2 className="text-[#111418] dark:text-white text-lg font-bold leading-tight tracking-[-0.015em]">Ngâm Rữa Xắt Khía</h2>
+            <h2 className="text-[#111418] dark:text-white text-lg font-bold leading-tight tracking-[-0.015em]">Hầm cho rục, kho cho thắm</h2>
           </div>
         </header>
 
@@ -65,12 +65,12 @@ export default function App() {
 
             <div className="relative z-10 w-full max-w-[640px] flex flex-col gap-10 animate-fade-in-up">
                 <div className="flex flex-col gap-2 text-center items-center">
-                    <span className="text-primary text-xs font-bold uppercase tracking-wider">Collective Poetry</span>
+                    <span className="text-primary text-xs font-bold uppercase tracking-wider">Thơ Ca Tập Thể</span>
                     <h1 className="text-3xl md:text-5xl font-bold leading-tight tracking-tight bg-gradient-to-br from-white to-[#bfdbfe] bg-clip-text text-transparent">
-                        Transmute your burden
+                        Chuyển hóa nỗi niềm
                     </h1>
                     <p className="text-[#64748b] dark:text-[#bfdbfe] text-base md:text-lg max-w-md mx-auto mt-2">
-                        Input your abstract emotion to generate a unique poetic recipe for release.
+                        Nhập vào cảm xúc của bạn để tạo ra một công thức thơ độc đáo để giải tỏa.
                     </p>
                 </div>
 
@@ -79,7 +79,7 @@ export default function App() {
                         <label className="flex flex-col gap-2" htmlFor="abstract-input">
                             <span className="text-[#111418] dark:text-white text-lg font-bold leading-normal flex items-center gap-2">
                                 <span className="material-symbols-outlined text-primary text-xl">psychology</span>
-                                What abstract thing are you carrying?
+                                Bạn muốn “chế biến” điều gì (cảm xúc, tâm trạng, một thứ khó thể gọi tên)?
                             </span>
                         </label>
                         <div className="relative group">
@@ -98,7 +98,7 @@ export default function App() {
                         <div className="flex items-center justify-between">
                             <label className="text-[#111418] dark:text-white text-lg font-bold leading-normal flex items-center gap-2" htmlFor="weight-slider">
                                 <span className="material-symbols-outlined text-primary text-xl">scale</span>
-                                How much does it weigh?
+                                Khối lượng của nó là bao nhiêu?
                             </label>
                             <span className="text-primary font-bold text-xl font-mono">{weight} kg</span>
                         </div>
@@ -131,21 +131,19 @@ export default function App() {
                             {loading ? (
                                 <>
                                     <span className="material-symbols-outlined animate-spin">progress_activity</span>
-                                    Transmuting...
+                                    Đang chế biến...
                                 </>
                             ) : (
                                 <>
                                     <span className="material-symbols-outlined">auto_fix_high</span>
-                                    Transmute into Recipe
+                                    Chế biến thành Công thức
                                 </>
                             )}
                         </span>
                     </button>
-                    {error && <p className="text-red-500 text-center mt-4">{error}</p>}
+                    {error && <p className="text-red-500 text-center mt-4">Chế biến thất bại. Vui lòng thử lại.</p>}
                 </div>
-                <p className="text-center text-sm text-[#64748b] dark:text-[#64748b]">
-                    Your input will be anonymized and added to the collective soup.
-                </p>
+
             </div>
         </main>
       </div>
@@ -156,14 +154,14 @@ export default function App() {
     <div className="bg-background-light dark:bg-background-dark min-h-screen flex flex-col font-display transition-colors duration-200">
         <header className="flex items-center justify-between whitespace-nowrap border-b border-solid border-[#e2e8f0] dark:border-[#1e293b] px-6 lg:px-10 py-4 no-print relative z-10 bg-background-light dark:bg-background-dark">
             <div className="flex items-center gap-4 text-[#0f172a] dark:text-white">
-                <h2 className="text-lg font-bold leading-tight tracking-[-0.015em]">Ngâm Rữa Xắt Khía</h2>
+                <h2 className="text-lg font-bold leading-tight tracking-[-0.015em]">Hầm cho rục, kho cho thắm</h2>
             </div>
             <button
                 onClick={handleNewRecipe}
                 className="flex min-w-[84px] cursor-pointer items-center justify-center overflow-hidden rounded-full h-10 px-6 bg-primary/10 hover:bg-primary/20 dark:bg-[#1e293b] dark:hover:bg-[#334155] text-[#0f172a] dark:text-primary transition-colors text-sm font-bold leading-normal tracking-[0.015em]"
             >
                 <span className="material-symbols-outlined mr-2 text-lg">add</span>
-                <span className="truncate">New Recipe</span>
+                <span className="truncate">Công thức mới</span>
             </button>
         </header>
 
@@ -176,7 +174,7 @@ export default function App() {
             <div className="w-full max-w-[800px] flex flex-col items-center relative z-10">
                 <div className="mb-8 no-print">
                     <h4 className="text-[#0f172a] dark:text-[#93c5fd] text-sm font-bold uppercase tracking-[0.15em] px-4 py-2 text-center border-b border-primary/30 pb-1">
-                        Your Recipe for Release
+                        Công thức giải tỏa của bạn
                     </h4>
                 </div>
 
@@ -196,7 +194,7 @@ export default function App() {
                             For now, we display the full answer in the typewriter section.
                         */}
                         <h1 className="text-[#0f172a] dark:text-white tracking-tight text-5xl sm:text-[64px] font-extrabold leading-none mb-6">
-                            RECIPE
+                            CÔNG THỨC
                         </h1>
 
                         <div className="flex flex-wrap gap-3 justify-center mb-10 w-full">
@@ -238,14 +236,14 @@ export default function App() {
                         onClick={() => window.print()}
                     >
                         <span className="material-symbols-outlined mr-2 group-hover:animate-bounce">print</span>
-                        <span>Print Receipt</span>
+                        <span> In Công Thức</span>
                     </button>
                 </div>
             </div>
         </main>
 
         <footer className="w-full py-6 text-center text-gray-400 dark:text-gray-600 text-sm no-print">
-            <p>Ngâm Rữa Xắt Khía © 2025. A collective experiment.</p>
+            <p>Hầm cho rục, kho cho thắm © 2025</p>
         </footer>
     </div>
   );
