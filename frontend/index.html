@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html class="dark" lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <title>Collective Poetry: Recipe Creation</title>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap"
+      rel="stylesheet"
+    />
+    <link href="https://fonts.googleapis.com" rel="preconnect" />
+    <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;700;800&amp;family=Noto+Sans:wght@400;500;700&amp;display=swap"
+      rel="stylesheet"
+    />
+    <!-- Using Tailwind CDN for simplicity as per reference files, though Vite usually handles this.
+         If the project has local tailwind, this might be redundant but ensures the reference styles work. -->
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            colors: {
+              primary: "#60a5fa",
+              "background-light": "#f0f9ff",
+              "background-dark": "#0f172a",
+            },
+            fontFamily: {
+              display: ["Noto Sans", "Manrope", "sans-serif"],
+            },
+            borderRadius: {
+              DEFAULT: "1rem",
+              lg: "2rem",
+              xl: "3rem",
+              full: "9999px",
+            },
+          },
+        },
+      };
+    </script>
+    <style>
+      input[type="range"] {
+        -webkit-appearance: none;
+        width: 100%;
+        background: transparent;
+      }
+      input[type="range"]::-webkit-slider-thumb {
+        -webkit-appearance: none;
+        height: 24px;
+        width: 24px;
+        border-radius: 50%;
+        background: #60a5fa;
+        cursor: pointer;
+        margin-top: -10px;
+        box-shadow: 0 0 10px rgba(96, 165, 250, 0.5);
+        border: 2px solid #0f172a;
+      }
+      input[type="range"]::-webkit-slider-runnable-track {
+        width: 100%;
+        height: 4px;
+        cursor: pointer;
+        background: #1e293b;
+        border-radius: 2px;
+      }
+      input[type="range"]:focus {
+        outline: none;
+      }
+      input[type="range"]::-moz-range-thumb {
+        height: 24px;
+        width: 24px;
+        border-radius: 50%;
+        background: #60a5fa;
+        cursor: pointer;
+        box-shadow: 0 0 10px rgba(96, 165, 250, 0.5);
+        border: 2px solid #0f172a;
+      }
+      input[type="range"]::-moz-range-track {
+        width: 100%;
+        height: 4px;
+        cursor: pointer;
+        background: #1e293b;
+        border-radius: 2px;
+      }
+      .bg-grid-pattern {
+        background-image: linear-gradient(to right, #1e293b 1px, transparent 1px),
+          linear-gradient(to bottom, #1e293b 1px, transparent 1px);
+        background-size: 40px 40px;
+        mask-image: radial-gradient(circle at center, black 40%, transparent 100%);
+      }
+      @keyframes shimmer {
+        100% {
+          transform: translateX(100%);
+        }
+      }
+      @keyframes fadeInUp {
+        from {
+          opacity: 0;
+          transform: translate3d(0, 20px, 0);
+        }
+        to {
+          opacity: 1;
+          transform: translate3d(0, 0, 0);
+        }
+      }
+      .animate-fade-in-up {
+        animation: fadeInUp 0.8s ease-out forwards;
+      }
+      @media print {
+        @page {
+          margin: 0;
+          size: auto;
+        }
+        body {
+          margin: 1cm;
+          background-color: white !important;
+          color: black !important;
+        }
+        /* Force all elements to have white background and black text */
+        * {
+          background-color: white !important;
+          color: black !important;
+          text-shadow: none !important;
+          box-shadow: none !important;
+        }
+        .no-print {
+          display: none !important;
+        }
+        .print-border {
+          border: 2px solid black !important;
+          max-width: 100% !important;
+          margin: 0 auto !important;
+          page-break-inside: avoid !important;
+        }
+        /* Hide browser headers/footers if possible */
+        header, footer {
+          display: none !important;
+        }
+      }
+      .typewriter-text {
+        overflow: hidden;
+        white-space: pre-wrap;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="root"></div>
+    <script type="module" src="/src/main.tsx"></script>
+  </body>
+</html>
