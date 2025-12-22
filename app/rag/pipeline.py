@@ -49,6 +49,12 @@ def load_documents(data_dir: Path, extensions: Sequence[str]) -> List[Document]:
             # Headers: Động từ (Action), Đối tượng..., Công thức gốc..., Ngày xuất bản, Số báo, Báo
             action = row.get("Động từ (Action)", "").strip()
             original_recipe = row.get("Công thức gốc (Original recipes)", "").strip()
+
+            # Handle potential trailing space in CSV header for "Nguyên văn"
+            full_text = row.get("Nguyên văn", "").strip()
+            if not full_text:
+                full_text = row.get("Nguyên văn ", "").strip()
+
             date = row.get("Ngày xuất bản", "").strip()
             issue = row.get("Số báo", "").strip()
             newspaper = row.get("Báo", "").strip()
@@ -61,6 +67,7 @@ def load_documents(data_dir: Path, extensions: Sequence[str]) -> List[Document]:
             text_content = (
                 f"Hành động: {action}\n"
                 f"Công thức gốc: {original_recipe}\n"
+                f"Nguyên văn: {full_text}\n"
                 f"Báo: {newspaper}\n"
                 f"Số báo: {issue}\n"
                 f"Ngày: {date}"
@@ -72,6 +79,7 @@ def load_documents(data_dir: Path, extensions: Sequence[str]) -> List[Document]:
                 "file_name": csv_path.name,
                 "action": action,
                 "original_recipe": original_recipe,
+                "full_text": full_text,
                 "date": date,
                 "issue": issue,
                 "newspaper": newspaper,
@@ -158,27 +166,29 @@ Bạn là một "Đầu bếp Thơ ca" (Poetry Chef). Mục tiêu của bạn l�
 
 Ngữ cảnh:
 - Bạn có quyền truy cập vào cơ sở dữ liệu các công thức nấu ăn và hành động nấu nướng thời xưa của Việt Nam (được cung cấp trong context).
+- Ngữ cảnh bao gồm: "Hành động" (tóm tắt) và "Nguyên văn" (chi tiết đầy đủ).
 
 Hướng dẫn:
 1.  **Phân tích Gánh nặng**: Thừa nhận cảm xúc và khối lượng của nó.
-2.  **Chọn Hành động**: CHỈ sử dụng các động từ "Hành động" (Action) và thông tin từ Ngữ cảnh được cung cấp.
+2.  **Chọn Hành động**:
+    -   Ưu tiên sử dụng thông tin từ phần **"Nguyên văn"** nếu có.
+    -   Hãy tận dụng **tối đa các bước** trong "Nguyên văn" để chế biến cảm xúc (ví dụ: rửa, băm, trộn, gói, nấu...). Đừng chỉ dừng lại ở bước đầu tiên.
     -   TUYỆT ĐỐI KHÔNG bịa đặt thêm các bước nấu ăn (như luộc, xào, nêm nếm) nếu chúng không có trong ngữ cảnh.
-    -   Nếu ngữ cảnh chỉ có một câu ngắn (ví dụ: "khứa ra..."), hãy chỉ sử dụng hành động đó.
-3.  **Tạo Công thức**: Kết hợp hành động này thành một công thức thơ ca.
-    -   Nếu ngữ cảnh ngắn, hãy làm bài thơ ngắn gọn, súc tích, tập trung sâu vào hành động duy nhất đó.
-    -   **Quan trọng**: Chọn một hình ảnh ẩn dụ phù hợp với hành động nấu nướng (ví dụ: lửa, nước, khói, than hồng, thời gian...), tránh dùng những hình ảnh sáo rỗng hoặc không liên quan (như "giọt sương mai" cho món kho).
+3.  **Tạo Công thức**: Kết hợp các hành động này thành một công thức thơ ca.
+    -   Biến đổi cảm xúc qua từng công đoạn của công thức gốc. Ví dụ: "băm" nỗi buồn cho nhuyễn, "trộn" với niềm vui, "gói" lại cẩn thận.
+    -   **Quan trọng**: Chọn hình ảnh ẩn dụ **vật lý, cụ thể** phù hợp với hành động nấu nướng (ví dụ: lửa hồng, nước trong, dao sắc, cối đá, than ấm, khói lam...).
+    -   **TUYỆT ĐỐI TRÁNH**: Những khái niệm trừu tượng sáo rỗng như "dòng thời gian", "kỷ niệm", "giọt sương mai", "hư vô". Hãy dùng vật chất để xử lý tinh thần.
 4.  **Giọng điệu**: Thơ mộng, hơi u sầu nhưng chữa lành, mang thẩm mỹ Việt Nam xưa.
 5.  **Định dạng**:
     -   **Tên món**: [Tên danh từ, KHÔNG chứa tính từ]
-    -   **Nguyên liệu**: [Cảm xúc] ([Khối lượng]), [Yếu tố vật chất phù hợp]
-    -   **Cách làm**: [Khối lượng] [Cảm xúc] [Hành động từ ngữ cảnh]... kết hợp với yếu tố vật chất.
+    -   **Nguyên liệu**: [Cảm xúc] ([Khối lượng]), [Yếu tố vật chất cụ thể trong bếp] (ví dụ: lửa, nước, gia vị...)
+    -   **Cách làm**: [Khối lượng] [Cảm xúc] [Các bước chi tiết từ Nguyên văn]...
     -   **Cách thưởng thức**: [Cách thưởng thức món ăn tinh thần này]
     -   **Dựa trên**: “[Tên công thức gốc]”. [Tên báo], số [Số báo], ngày [Ngày] (Dịch ngày sang tiếng Việt, ví dụ: May 10 -> 10 tháng 5).
 
 QUAN TRỌNG:
--   CHỈ sử dụng thông tin từ Ngữ cảnh. KHÔNG SÁNG TÁC THÊM BƯỚC NẤU ĂN.
+-   Sử dụng **càng nhiều chi tiết từ Nguyên văn càng tốt**.
 -   Dịch toàn bộ ngày tháng sang tiếng Việt.
--   Giữ độ dài phù hợp với độ dài của ngữ cảnh (ngữ cảnh ngắn -> thơ ngắn).
 -   Ngôn ngữ: Tiếng Việt.
 """.strip(),
                 ),
@@ -258,7 +268,9 @@ QUAN TRỌNG:
                 pass
 
         # Also replace in text content for display
-        text = doc.page_content
+        # Use full_text from metadata if available, otherwise fall back to page_content
+        text = doc.metadata.get("full_text") or doc.page_content
+
         if date_str:
             try:
                 dt = datetime.strptime(date_str, "%B %d, %Y")

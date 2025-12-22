@@ -165,7 +165,7 @@ export default function App() {
 
               {/* Print Button */}
               <button onClick={() => window.print()} className="print-btn">
-                In thực đơn
+                In công thức
               </button>
             </div>
           </div>
