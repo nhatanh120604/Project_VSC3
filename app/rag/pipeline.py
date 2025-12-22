@@ -1,6 +1,7 @@
 from __future__ import annotations
 
 import csv
+from datetime import datetime
 import logging
 from pathlib import Path
 import re
@@ -36,12 +37,12 @@ def load_documents(data_dir: Path, extensions: Sequence[str]) -> List[Document]:
         # Fallback to searching for any csv if data.csv doesn't exist
         csv_files = list(data_dir.glob("*.csv"))
         if not csv_files:
-             raise ValueError(f"No CSV files found in {data_dir}.")
+            raise ValueError(f"No CSV files found in {data_dir}.")
         csv_path = csv_files[0]
 
     documents: List[Document] = []
 
-    with open(csv_path, encoding='utf-8-sig') as f:
+    with open(csv_path, encoding="utf-8-sig") as f:
         reader = csv.DictReader(f)
         for row in reader:
             # Extract fields based on the CSV structure
@@ -74,7 +75,11 @@ def load_documents(data_dir: Path, extensions: Sequence[str]) -> List[Document]:
                 "date": date,
                 "issue": issue,
                 "newspaper": newspaper,
-                "citation_label": f"{original_recipe} ({newspaper}, {date})" if original_recipe else "Unknown Recipe"
+                "citation_label": (
+                    f"{original_recipe} ({newspaper}, {date})"
+                    if original_recipe
+                    else "Unknown Recipe"
+                ),
             }
 
             documents.append(Document(page_content=text_content, metadata=metadata))
@@ -90,7 +95,7 @@ def unique_citations(docs: Sequence[Document]) -> List[str]:
     for doc in docs:
         label = doc.metadata.get("citation_label")
         if not label:
-             label = doc.metadata.get("original_recipe") or "Unknown Source"
+            label = doc.metadata.get("original_recipe") or "Unknown Source"
         if label not in citations:
             citations.append(label)
     return citations
@@ -136,14 +141,16 @@ class RagService:
             chunk_overlap=settings.chunk_overlap,
             separators=["\n\n", "\n", " ", ""],
         )
-        self.llm = ChatOpenAI(model=settings.chat_model, temperature=0.8) # Slightly higher for more creativity
+        self.llm = ChatOpenAI(
+            model=settings.chat_model, temperature=0.8
+        )  # Slightly higher for more creativity
 
         self.prompt = ChatPromptTemplate.from_messages(
             [
                 (
                     "system",
                     """
-Bạn là một "Đầu bếp Thơ ca Tập thể" (Collective Poetry Chef). Mục tiêu của bạn là tạo ra một "công thức nấu ăn đầy chất thơ" để chuyển hóa gánh nặng trừu tượng của người dùng thành một điều gì đó đẹp đẽ.
+Bạn là một "Đầu bếp Thơ ca" (Poetry Chef). Mục tiêu của bạn là tạo ra một "công thức nấu ăn đầy chất thơ" để chuyển hóa gánh nặng trừu tượng của người dùng thành một điều gì đó đẹp đẽ.
 
 Đầu vào:
 - Cảm xúc trừu tượng (người dùng đang mang gánh nặng gì)
@@ -159,12 +166,13 @@ Hướng dẫn:
     -   Nếu ngữ cảnh chỉ có một câu ngắn (ví dụ: "khứa ra..."), hãy chỉ sử dụng hành động đó.
 3.  **Tạo Công thức**: Kết hợp hành động này thành một công thức thơ ca.
     -   Nếu ngữ cảnh ngắn, hãy làm bài thơ ngắn gọn, súc tích, tập trung sâu vào hành động duy nhất đó.
+    -   **Quan trọng**: Chọn một hình ảnh ẩn dụ phù hợp với hành động nấu nướng (ví dụ: lửa, nước, khói, than hồng, thời gian...), tránh dùng những hình ảnh sáo rỗng hoặc không liên quan (như "giọt sương mai" cho món kho).
 4.  **Giọng điệu**: Thơ mộng, hơi u sầu nhưng chữa lành, mang thẩm mỹ Việt Nam xưa.
 5.  **Định dạng**:
-    -   **Tên món**: [Tên sáng tạo dựa trên ngữ cảnh]
-    -   **Nguyên liệu**: [Cảm xúc] ([Khối lượng]), [Nguyên liệu ẩn dụ]
-    -   **Cách làm**: [Khối lượng] [Cảm xúc] [Hành động từ ngữ cảnh]... (Ví dụ: 5kg nỗi buồn khứa ra...)
-    -   **Lời khuyên**: [Cách thưởng thức/giải tỏa]
+    -   **Tên món**: [Tên danh từ, KHÔNG chứa tính từ]
+    -   **Nguyên liệu**: [Cảm xúc] ([Khối lượng]), [Yếu tố vật chất phù hợp]
+    -   **Cách làm**: [Khối lượng] [Cảm xúc] [Hành động từ ngữ cảnh]... kết hợp với yếu tố vật chất.
+    -   **Cách thưởng thức**: [Cách thưởng thức món ăn tinh thần này]
     -   **Dựa trên**: “[Tên công thức gốc]”. [Tên báo], số [Số báo], ngày [Ngày] (Dịch ngày sang tiếng Việt, ví dụ: May 10 -> 10 tháng 5).
 
 QUAN TRỌNG:
@@ -174,7 +182,10 @@ QUAN TRỌNG:
 -   Ngôn ngữ: Tiếng Việt.
 """.strip(),
                 ),
-                ("user", "Context:\n{context}\n\nInput Emotion: {question}\nWeight: {additional_context}"),
+                (
+                    "user",
+                    "Context:\n{context}\n\nInput Emotion: {question}\nWeight: {additional_context}",
+                ),
             ]
         )
 
@@ -234,15 +245,40 @@ QUAN TRỌNG:
         if not label:
             label = doc.metadata.get("original_recipe") or "Unknown Source"
 
+        # Format date to Vietnamese if present
+        date_str = doc.metadata.get("date", "")
+        if date_str:
+            try:
+                dt = datetime.strptime(date_str, "%B %d, %Y")
+                formatted_date = f"{dt.day} tháng {dt.month}, {dt.year}"
+
+                if date_str in label:
+                    label = label.replace(date_str, formatted_date)
+            except ValueError:
+                pass
+
+        # Also replace in text content for display
+        text = doc.page_content
+        if date_str:
+            try:
+                dt = datetime.strptime(date_str, "%B %d, %Y")
+                formatted_date = f"{dt.day} tháng {dt.month}, {dt.year}"
+                if date_str in text:
+                    text = text.replace(date_str, formatted_date)
+            except ValueError:
+                pass
+
         return SourceChunk(
             label=label,
-            page_number=None, # Not applicable for CSV usually
-            chapter=doc.metadata.get("issue"), # Map issue to chapter? Or just leave blank
+            page_number=None,  # Not applicable for CSV usually
+            chapter=doc.metadata.get(
+                "issue"
+            ),  # Map issue to chapter? Or just leave blank
             book_title=doc.metadata.get("newspaper"),
             file_name=doc.metadata.get("file_name"),
             source_path=doc.metadata.get("source"),
-            text=doc.page_content,
-            viewer_url=None, # No viewer for CSV rows yet
+            text=text,
+            viewer_url=None,  # No viewer for CSV rows yet
         )
 
     def ask(
@@ -282,7 +318,7 @@ QUAN TRỌNG:
                 self.prompt.format_messages(
                     context=context_text,
                     question=question,
-                    additional_context=additional_context or "Unknown Weight"
+                    additional_context=additional_context or "Unknown Weight",
                 )
             )
         finally:
