@@ -647,7 +647,7 @@ body {
   font-weight: normal;
   color: #666;
   margin-left: 8px;
-  font-family: 'Arial Unicode MS', Arial, sans-serif;
+  font-family: "Arial Unicode MS", Arial, sans-serif;
 }
 
 .slider-container {
@@ -706,7 +706,6 @@ body {
   background: #333333;
 }
 
-
 .keyword-citation {
   white-space: pre-wrap;
   line-height: 2.2;
@@ -714,11 +713,9 @@ body {
   display: block;
 }
 
-
 .output-section {
   position: relative; /* For cloud positioning */
 }
-
 
 /* ===================================
    Print Button
@@ -732,7 +729,7 @@ body {
   color: #000;
   border-radius: 50px;
   cursor: pointer;
-  font-family: 'Arial Unicode MS', Arial, sans-serif;
+  font-family: "Arial Unicode MS", Arial, sans-serif;
   font-size: 14px;
   text-transform: uppercase;
   letter-spacing: 1px;
@@ -793,4 +790,3 @@ body {
     margin-top: 0;
   }
 }
-
