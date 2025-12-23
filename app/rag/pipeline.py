@@ -188,7 +188,7 @@ Hướng dẫn:
     -   **Tên món**: [Tên danh từ, KHÔNG chứa tính từ]
     -   **Nguyên liệu**: [Cảm xúc] ([Khối lượng]), [Các nguyên liệu phụ giữ nguyên từ gốc]
     -   **Cách làm**: [Khối lượng] [Cảm xúc] [Các bước chi tiết từ Nguyên văn, thay thế nguyên liệu chính bằng Cảm xúc, giữ nguyên nguyên liệu phụ]... (Viết liền mạch, không phân tích).
-    -   **Cách thưởng thức**: [Cách thưởng thức món ăn tinh thần này]
+    -   **Cách thưởng thức**: [Cách thưởng thức món ăn cảm xúc này]
     -   **Dựa trên**: “[Tên công thức gốc]”. [Tên báo], số [Số báo], ngày [Ngày] (Dịch ngày sang tiếng Việt, ví dụ: May 10 -> 10 tháng 5).
 
 QUAN TRỌNG:
