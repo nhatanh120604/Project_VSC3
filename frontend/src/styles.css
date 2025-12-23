@@ -747,7 +747,7 @@ body {
 @media print {
   @page {
     margin: 0;
-    size: auto;
+    size: A4;
   }
 
   .title-section,
@@ -761,8 +761,10 @@ body {
 
   body {
     background-color: #fff;
-    padding: 0;
+    padding: 1.5cm;
     margin: 0;
+    font-size: 12pt;
+    color: #000;
   }
 
   .container {
@@ -774,7 +776,7 @@ body {
 
   .output-section {
     margin: 0;
-    padding: 20px;
+    padding: 0;
     animation: none;
     max-width: 100%;
   }
@@ -788,5 +790,60 @@ body {
 
   .output-title {
     margin-top: 0;
+    font-size: 22px;
+    margin-bottom: 15px;
+    padding-bottom: 10px;
+    border-bottom: 1px solid #000;
+  }
+
+  .poem-output {
+    font-size: 12pt;
+    line-height: 1.5;
+    margin-bottom: 20px;
+    text-align: justify;
+  }
+
+  .poem-separator {
+    margin: 20px auto;
+    background-color: #000;
+  }
+
+  .explanation-section {
+    margin-top: 20px;
+    padding-top: 15px;
+    border-top: 1px solid #000;
+    page-break-inside: avoid;
+  }
+
+  .explanation-title {
+    font-size: 20px;
+    margin-bottom: 15px;
+  }
+
+  .keyword-item {
+    padding: 10px;
+    margin-bottom: 15px;
+    background-color: transparent;
+    border: 1px solid #000;
+    border-radius: 8px;
+    page-break-inside: avoid;
+  }
+
+  .keyword-item h4 {
+    font-size: 14px;
+    margin-bottom: 8px;
+  }
+
+  .keyword-detail {
+    font-size: 12px;
+    margin-bottom: 6px;
+    line-height: 1.4;
+  }
+
+  .keyword-citation {
+    font-size: 12px;
+    line-height: 1.4;
+    margin-top: 8px;
+    border-left-color: #000;
   }
 }

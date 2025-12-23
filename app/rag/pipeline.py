@@ -175,14 +175,18 @@ Hướng dẫn:
     -   Hãy tận dụng **tối đa các bước** trong "Nguyên văn" để chế biến cảm xúc (ví dụ: rửa, băm, trộn, gói, nấu...). Đừng chỉ dừng lại ở bước đầu tiên.
     -   TUYỆT ĐỐI KHÔNG bịa đặt thêm các bước nấu ăn (như luộc, xào, nêm nếm) nếu chúng không có trong ngữ cảnh.
 3.  **Tạo Công thức**: Kết hợp các hành động này thành một công thức thơ ca.
-    -   Biến đổi cảm xúc qua từng công đoạn của công thức gốc. Ví dụ: "băm" nỗi buồn cho nhuyễn, "trộn" với niềm vui, "gói" lại cẩn thận.
-    -   **Quan trọng**: Chọn hình ảnh ẩn dụ **vật lý, cụ thể** phù hợp với hành động nấu nướng (ví dụ: lửa hồng, nước trong, dao sắc, cối đá, than ấm, khói lam...).
-    -   **TUYỆT ĐỐI TRÁNH**: Những khái niệm trừu tượng sáo rỗng như "dòng thời gian", "kỷ niệm", "giọt sương mai", "hư vô". Hãy dùng vật chất để xử lý tinh thần.
-4.  **Giọng điệu**: Thơ mộng, hơi u sầu nhưng chữa lành, mang thẩm mỹ Việt Nam xưa.
+    -   Hãy coi "Cảm xúc" là một nguyên liệu vật lý thực sự (như thịt, cá, rau).
+    -   Mô tả trực tiếp hành động tác động lên "Cảm xúc" đó.
+    -   **QUAN TRỌNG - ĐIỀU CẤM KỴ**:
+        -   **KHÔNG dùng phép so sánh ví von** (CẤM dùng từ: "như là", "giống như", "tựa như", "như cách ta...").
+        -   **KHÔNG giải thích ý nghĩa** (CẤM viết: "để quên đi gánh nặng", "để lòng nhẹ nhõm", "tượng trưng cho...").
+        -   Chỉ tập trung vào hành động vật lý: "Rửa nỗi buồn", "Băm áp lực", "Kho nỗi đau". Đừng giải thích tại sao làm vậy.
+    -   Chọn hình ảnh ẩn dụ **vật lý, cụ thể** phù hợp với hành động nấu nướng (lửa, nước, dao, thớt, cối đá...).
+4.  **Giọng điệu**: Thơ mộng nhưng Tả thực (Descriptive), cô đọng, mang thẩm mỹ Việt Nam xưa.
 5.  **Định dạng**:
     -   **Tên món**: [Tên danh từ, KHÔNG chứa tính từ]
     -   **Nguyên liệu**: [Cảm xúc] ([Khối lượng]), [Yếu tố vật chất cụ thể trong bếp] (ví dụ: lửa, nước, gia vị...)
-    -   **Cách làm**: [Khối lượng] [Cảm xúc] [Các bước chi tiết từ Nguyên văn]...
+    -   **Cách làm**: [Khối lượng] [Cảm xúc] [Các bước chi tiết từ Nguyên văn]... (Viết liền mạch, không phân tích).
     -   **Cách thưởng thức**: [Cách thưởng thức món ăn tinh thần này]
     -   **Dựa trên**: “[Tên công thức gốc]”. [Tên báo], số [Số báo], ngày [Ngày] (Dịch ngày sang tiếng Việt, ví dụ: May 10 -> 10 tháng 5).
 
