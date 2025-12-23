@@ -175,18 +175,19 @@ Hướng dẫn:
     -   Hãy tận dụng **tối đa các bước** trong "Nguyên văn" để chế biến cảm xúc (ví dụ: rửa, băm, trộn, gói, nấu...). Đừng chỉ dừng lại ở bước đầu tiên.
     -   TUYỆT ĐỐI KHÔNG bịa đặt thêm các bước nấu ăn (như luộc, xào, nêm nếm) nếu chúng không có trong ngữ cảnh.
 3.  **Tạo Công thức**: Kết hợp các hành động này thành một công thức thơ ca.
-    -   Hãy coi "Cảm xúc" là một nguyên liệu vật lý thực sự (như thịt, cá, rau).
+    -   **Nguyên tắc Vàng**: Chỉ thay thế **nguyên liệu chính** (thịt, cá, rau...) của công thức gốc bằng **[Cảm xúc]**.
+    -   **Các nguyên liệu phụ** (nước, muối, lửa, than, gia vị...): Giữ nguyên là vật chất vật lý. **TUYỆT ĐỐI KHÔNG** biến chúng thành ẩn dụ (Ví dụ: CẤM viết "muối của niềm vui", "nước của sự quên lãng", "lửa của đam mê"). Chỉ viết "muối", "nước", "lửa".
     -   Mô tả trực tiếp hành động tác động lên "Cảm xúc" đó.
     -   **QUAN TRỌNG - ĐIỀU CẤM KỴ**:
         -   **KHÔNG dùng phép so sánh ví von** (CẤM dùng từ: "như là", "giống như", "tựa như", "như cách ta...").
         -   **KHÔNG giải thích ý nghĩa** (CẤM viết: "để quên đi gánh nặng", "để lòng nhẹ nhõm", "tượng trưng cho...").
+        -   **KHÔNG thêm thắt tính từ hoa mỹ**: Nếu gốc là "rửa nước lạnh", chỉ viết "rửa nước lạnh", không viết "rửa dòng nước lạnh thanh tẩy".
         -   Chỉ tập trung vào hành động vật lý: "Rửa nỗi buồn", "Băm áp lực", "Kho nỗi đau". Đừng giải thích tại sao làm vậy.
-    -   Chọn hình ảnh ẩn dụ **vật lý, cụ thể** phù hợp với hành động nấu nướng (lửa, nước, dao, thớt, cối đá...).
 4.  **Giọng điệu**: Thơ mộng nhưng Tả thực (Descriptive), cô đọng, mang thẩm mỹ Việt Nam xưa.
 5.  **Định dạng**:
     -   **Tên món**: [Tên danh từ, KHÔNG chứa tính từ]
-    -   **Nguyên liệu**: [Cảm xúc] ([Khối lượng]), [Yếu tố vật chất cụ thể trong bếp] (ví dụ: lửa, nước, gia vị...)
-    -   **Cách làm**: [Khối lượng] [Cảm xúc] [Các bước chi tiết từ Nguyên văn]... (Viết liền mạch, không phân tích).
+    -   **Nguyên liệu**: [Cảm xúc] ([Khối lượng]), [Các nguyên liệu phụ giữ nguyên từ gốc]
+    -   **Cách làm**: [Khối lượng] [Cảm xúc] [Các bước chi tiết từ Nguyên văn, thay thế nguyên liệu chính bằng Cảm xúc, giữ nguyên nguyên liệu phụ]... (Viết liền mạch, không phân tích).
     -   **Cách thưởng thức**: [Cách thưởng thức món ăn tinh thần này]
     -   **Dựa trên**: “[Tên công thức gốc]”. [Tên báo], số [Số báo], ngày [Ngày] (Dịch ngày sang tiếng Việt, ví dụ: May 10 -> 10 tháng 5).
 
