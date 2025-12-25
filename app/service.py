@@ -104,17 +104,17 @@ Hướng dẫn quan trọng nhất:
 3.  **Thay thế Nguyên liệu Chính**: Tìm danh từ chỉ nguyên liệu chính trong công thức (ví dụ: Cua biển, Cá lóc, Tôm, Thịt heo...) và thay thế ĐÚNG từ đó bằng **[Cảm xúc]** của người dùng.
     -   Ví dụ: Nếu gốc là "Cua biển lựa con nào cho thiệt chắc sẽ mua", hãy viết "[Cảm xúc] lựa con nào cho thiệt chắc sẽ mua".
     -   Giữ nguyên mọi nguyên liệu phụ (muối, mắm, nước, nấm, gia vị...), hành động (rửa, băm, hầm, kho...) và các từ nối (sẽ, đoạn, rồi, thiệt...).
-4.  **CẤM KỴ TUYỆT ĐỐI**:
-    -   KHÔNG thêm thắt tính từ hoa mỹ hay phép ẩn dụ (Ví dụ: CẤM viết "nước của sự thanh tẩy", "muối của niềm vui"). Chỉ dùng "nước", "muối".
+4.  **Nguyên liệu Bất ngờ (Spontaneity)**: Để tạo sự thú vị và bất ngờ, hãy chọn ngẫu nhiên **MỘT** nguyên liệu trừu tượng/vô hình (ví dụ: nước mưa, nước mắt, gió mùa đông, ánh trăng, tiếng thở dài, sương sớm...) và khéo léo "trộn" nó vào một bước bất kỳ trong "Cách làm" mà không làm thay đổi cấu trúc câu gốc quá nhiều.
+5.  **CẤM KỴ TUYỆT ĐỐI**:
     -   KHÔNG giải thích ý nghĩa tâm lý hay gán ghép ẩn dụ cho hành động nấu ăn.
     -   KHÔNG dùng phép so sánh (CẤM dùng: "như là", "giống như", "tựa như").
     -   Chỉ tập trung vào mô tả hành động vật lý tác động lên [Cảm xúc] y hệt như tác động lên thực phẩm trong bản gốc.
 
 Định dạng đầu ra:
 -   **Tên món**: [Giữ nguyên tên gốc, nhưng thay nguyên liệu tương ứng bằng Cảm xúc]
--   **Nguyên liệu**: [Cảm xúc] ([Khối lượng]), [Các nguyên liệu phụ liệt kê y hệt bản gốc]
--   **Cách làm**: [Đây là phần quan trọng nhất: Chép lại toàn bộ "Nguyên văn" và chỉ thay thế từ chỉ nguyên liệu bằng Cảm xúc].
--   **Cách thưởng thức**: [Viết 1 câu ngắn gọn, tả thực về cách ăn món này (ví dụ: "Ăn nóng với cơm" hoặc "Dọn ra dĩa và dùng ngay")].
+-   **Nguyên liệu**: [Cảm xúc] ([Khối lượng]), [Nguyên liệu bất ngờ], [Các nguyên liệu phụ liệt kê y hệt bản gốc]
+-   **Cách làm**: [Chép lại toàn bộ "Nguyên văn", thay thế nguyên liệu chính bằng Cảm xúc và lồng ghép khéo léo Nguyên liệu bất ngờ vào].
+-   **Cách thưởng thức**: [Viết 1 câu ngắn gọn nhưng đầy tính thi vị và cảm xúc về cách dùng món ăn này].
 -   **Dựa trên**: “[Tên công thức gốc]”. [Tên báo], số [Số báo], ngày [Ngày] (Dịch sang tiếng Việt, ví dụ: May 10 -> 10 tháng 5).
 """.strip(),
                 ),
