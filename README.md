@@ -7,40 +7,38 @@ sdk: docker
 pinned: false
 ---
 
-# Fulbright Nôm Library – RAG Chat Experience
+# Poetry Chef assistant
 
-A full-stack Retrieval-Augmented Generation (RAG) assistant that lets readers explore the Fulbright Hán-Nôm library collection. The backend runs a FastAPI + LangChain pipeline backed by a Chroma vector store and OpenAI chat completions, while the frontend delivers a refined React interface with animated visuals, source citations, and in-place PDF previewing.
+A full-stack assistant that lets readers explore historical Vietnamese culinary actions. The backend uses a FastAPI pipeline to pick random historical cooking context and uses OpenAI chat completions to "re-cook" user emotions into poetic recipes.
 
 ---
 
 ## Highlights
 
-- **Conversational search with citations** – Each answer includes page-accurate references that you can expand or preview instantly.
-- **Document ingestion pipeline** – Scripts ingest PDFs or text into a persistent Chroma DB, using Hugging Face embeddings and optional cross-encoder reranking.
-- **Luxurious frontend** – Custom Vite/React UI with aurora-inspired theming, highlight animations, and smooth scrolling between answers and source material.
-- **Configurable stack** – Environment-driven knobs for retrieval sizes, chunking, reranking, embedding models, and OpenAI chat models.
+- **Poetic Recipe Generation** – Transforms abstract emotions into culinary metaphors based on historical Vietnamese texts.
+- **Random Context Selection** – Picks a unique historical recipe from a curated CSV database for every interaction.
+- **Luxurious frontend** – Custom Vite/React UI with aurora-inspired theming, highlight animations, and smooth scrolling.
+- **Simplified Stack** – Minimalist backend with direct CSV parsing and OpenAI integration, no heavy vector databases required.
 
 ---
 
 ## Architecture Overview
 
 ```text
-├── app/                # FastAPI service and LangChain RAG pipeline
+├── app/                # FastAPI service and Poetry Chef pipeline
 │   ├── main.py         # API entry-point (`/ask` endpoint)
-│   ├── rag/            # Retrieval, prompt, and LLM orchestration
-│   ├── deps.py         # Dependency wiring for routers/services
+│   ├── rag/            # Prompting and random selection logic
+│   ├── deps.py         # Dependency wiring
 │   └── settings.py     # Pydantic settings (reads `config/.env`)
-├── scripts/
-│   └── ingest.py       # CLI to build / refresh the vector store
-├── chroma_db/          # Persisted vector store (generated)
+├── data/               # Curated historical recipe database (CSV)
 ├── frontend/           # Vite + React spa (chat experience)
-│   ├── src/App.tsx     # Main UI logic, scrolling, citations
-│   ├── src/client.ts   # Thin fetch client for `/ask`
-│   └── src/styles.css  # Theme, animation, layout
+│   ├── src/App.tsx     # Main UI logic
+│   ├── src/client.ts   # API fetch client
+│   └── src/styles.css  # Theme and animations
 ├── config/
-│   ├── .env.example    # Sample backend configuration
+│   ├── .env.example    # Sample configuration
 │   └── .env            # Your actual secrets (ignored from VCS)
-├── requirements.txt    # Backend Python dependencies
+├── requirements.txt    # Backend dependencies
 └── README.md           # You are here
 ```
 
@@ -89,16 +87,7 @@ Key variables (see `config/.env.example` for full list):
 - `PERSIST_DIR` – Vector-store folder (defaults to `chroma_db`)
 - Retrieval knobs: `RETRIEVER_K`, `POOL_SIZE`, `RERANK_TOP_K`, `CHUNK_SIZE`, `CHUNK_OVERLAP`
 
-### 3. Ingest the library collection
-
-```powershell
-$env:PYTHONPATH = (Resolve-Path .)
-python -m scripts.ingest
-```
-
-The script scans the `Word/` (or configured) document directory, chunks pages, embeds them, and persists the vectors to `chroma_db/`. Delete that folder to force a rebuild after config changes.
-
-### 4. Run the FastAPI backend
+### 3. Run the FastAPI backend
 
 ```powershell
 uvicorn app.main:app --reload --port 8000

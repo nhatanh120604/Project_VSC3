@@ -8,14 +8,14 @@ from fastapi import Depends, FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 from fastapi.staticfiles import StaticFiles
 
-from .deps import get_app_settings, get_rag_service
-from .rag.pipeline import RagService
+from .deps import get_app_settings, get_service
+from .service import PoetryChefService
 from .schemas import AskRequest, AskResponse
 from .settings import Settings
 
 import logging
 
-import psutil
+
 
 LOGGER = logging.getLogger(__name__)
 if not LOGGER.handlers:
@@ -31,28 +31,10 @@ LOGGER.setLevel(logging.INFO)
 LOGGER.propagate = False
 
 
-def _gpu_snapshot() -> Optional[dict[str, float | str]]:
-    try:
-        import torch
-
-        if not torch.cuda.is_available():
-            return None
-        device_index = torch.cuda.current_device()
-        return {
-            "device": torch.cuda.get_device_name(device_index),
-            "memory_allocated_mb": torch.cuda.memory_allocated(device_index)
-            / (1024 * 1024),
-            "memory_reserved_mb": torch.cuda.memory_reserved(device_index)
-            / (1024 * 1024),
-        }
-    except Exception:
-        return None
-
-
 settings = get_app_settings()
 
 app = FastAPI(
-    title="Vietnamese RAG Assistant",
+    title="Poetry Chef Assistant",
     docs_url="/swagger",
     redoc_url="/redoc",
 )
@@ -86,13 +68,6 @@ def _mount_static_docs(settings: Settings) -> None:
 _mount_static_docs(settings)
 
 
-@app.on_event("startup")
-async def configure_app() -> None:
-    if settings.auto_ingest_on_startup:
-        rag = get_rag_service()
-        rag.ensure_vectorstore(force_rebuild=False)
-
-
 @app.get("/health", tags=["system"])
 async def health() -> dict[str, str]:
     return {"status": "ok"}
@@ -103,42 +78,23 @@ async def root() -> dict[str, str]:
     return {"status": "ok"}
 
 
-@app.post("/ask", response_model=AskResponse, tags=["rag"])
+@app.post("/ask", response_model=AskResponse, tags=["assistant"])
 async def ask_endpoint(
     payload: AskRequest,
-    rag: Annotated[RagService, Depends(get_rag_service)],
+    service: Annotated[PoetryChefService, Depends(get_service)],
 ) -> AskResponse:
-    proc = psutil.Process()
-    cpu_before = proc.cpu_times()
-    mem_before = proc.memory_info()
-    gpu_before = _gpu_snapshot() if getattr(rag, "device", None) == "cuda" else None
-
     start_ts = perf_counter()
-    result = rag.ask(
+    result = service.ask(
         question=payload.question,
         additional_context=payload.additional_context,
-        top_k=payload.top_k,
-        pool_size=payload.pool_size,
         temperature=payload.temperature,
-        rerank=payload.rerank,
     )
     duration = perf_counter() - start_ts
-    cpu_after = proc.cpu_times()
-    mem_after = proc.memory_info()
-    gpu_after = _gpu_snapshot() if getattr(rag, "device", None) == "cuda" else None
-
-    cpu_user = cpu_after.user - cpu_before.user
-    cpu_system = cpu_after.system - cpu_before.system
-    mem_used_delta = mem_after.rss - mem_before.rss
 
     LOGGER.info(
-        "ask request completed in %.3fs | cpu_user=%.3fs cpu_system=%.3fs mem_delta=%.2fMB gpu_before=%s gpu_after=%s",
+        "Ask request completed in %.3fs for emotion: %s",
         duration,
-        cpu_user,
-        cpu_system,
-        mem_used_delta / (1024 * 1024),
-        gpu_before,
-        gpu_after,
+        payload.question
     )
     return AskResponse.from_chain_result(
         answer=result["answer"],
