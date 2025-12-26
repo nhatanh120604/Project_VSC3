@@ -764,7 +764,7 @@ body {
     background-color: #fff;
     padding: 0;
     margin: 0;
-    font-size: 7pt; /* EXTREME reduction to guarantee fit */
+    font-size: 6pt; /* FURTHER reduction to 6pt */
     color: #000;
     line-height: 1.1;
   }
@@ -792,14 +792,14 @@ body {
 
   .output-title {
     margin-top: 0;
-    font-size: 8.5pt;
+    font-size: 7.5pt;
     margin-bottom: 1mm;
     padding-bottom: 0.5mm;
     border-bottom: 0.5px solid #000;
   }
 
   .poem-output {
-    font-size: 7pt;
+    font-size: 6pt;
     line-height: 1.15;
     margin-bottom: 1.5mm;
     text-align: justify;
@@ -820,13 +820,13 @@ body {
   }
 
   .explanation-title {
-    font-size: 8pt;
+    font-size: 7pt;
     margin-bottom: 1mm;
   }
 
   .keyword-item {
-    padding: 1.5px;
-    margin-bottom: 1.5mm;
+    padding: 1px;
+    margin-bottom: 1mm;
     background-color: transparent;
     border: 0.5px solid #000;
     border-radius: 1px;
@@ -834,18 +834,18 @@ body {
   }
 
   .keyword-item h4 {
-    font-size: 7pt;
+    font-size: 6.5pt;
     margin-bottom: 0.5mm;
   }
 
   .keyword-detail {
-    font-size: 6pt;
+    font-size: 5.5pt;
     margin-bottom: 0.3mm;
     line-height: 1.1;
   }
 
   .keyword-citation {
-    font-size: 7pt;
+    font-size: 6pt;
     line-height: 1.15;
     margin-top: 1mm;
     border-left: 1px solid #000;
