@@ -798,7 +798,7 @@ body {
   }
 
   .poem-output {
-    font-size: 14pt;
+    font-size: 12pt;
     line-height: 1.5;
     margin-bottom: 20px;
     text-align: justify;
@@ -842,7 +842,7 @@ body {
   }
 
   .keyword-citation {
-    font-size: 14pt;
+    font-size: 12pt;
     line-height: 1.4;
     margin-top: 8px;
     border-left-color: #000;
