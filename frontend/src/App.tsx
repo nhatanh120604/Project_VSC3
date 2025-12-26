@@ -39,9 +39,6 @@ export default function App() {
 
   return (
     <>
-      {/* Cloud Pattern Decoration */}
-      <div className="cloud-pattern"></div>
-
       {/* Main Container */}
       <div className="container">
         {/* Title Section */}
@@ -62,12 +59,12 @@ export default function App() {
           >
             {/* Emotion Input */}
             <div className="form-group">
-              <label htmlFor="emotion"> Nguyên liệu cảm xúc cần chế biến</label>
+              <label htmlFor="emotion">Nguyên liệu cảm xúc cần chế biến</label>
               <input
                 type="text"
                 id="emotion"
                 name="emotion"
-                placeholder="Ví dụ: Nỗi buồn, Áp lực..."
+                placeholder="khoai lang"
                 aria-label="Nhập cảm xúc"
                 required
                 value={emotion}
@@ -86,12 +83,20 @@ export default function App() {
                   type="range"
                   id="weight"
                   name="weight"
-                  min="1"
+                  min="0"
                   max="10"
+                  step="1"
                   value={weight}
                   onChange={(e) => setWeight(Number(e.target.value))}
                   className="aesthetic-slider"
                 />
+                <div className="slider-labels">
+                  {[0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10].map((num) => (
+                    <span key={num} className="slider-label">
+                      {num}
+                    </span>
+                  ))}
+                </div>
               </div>
             </div>
 
@@ -107,7 +112,7 @@ export default function App() {
                   <span className="spinner"></span> Đang tạo công thức...
                 </span>
               ) : (
-                <span className="btn-text">Tạo công thức</span>
+                <span className="btn-text">Tạo công thức</span>
               )}
             </button>
           </form>
@@ -125,7 +130,7 @@ export default function App() {
           <div id="output-section" className="output-section">
             <div className="poem-container">
               <h2 className="output-title">Món ăn của bạn</h2>
-              <pre id="output" className="poem-output">
+              <div id="output" className="poem-output">
                 {response.answer
                   .split(/(\*\*.*?\*\*)/g)
                   .map((part, index) =>
@@ -135,12 +140,12 @@ export default function App() {
                       <span key={index}>{part}</span>
                     )
                   )}
-              </pre>
+              </div>
               <div className="poem-separator"></div>
 
               {/* Explanation Section - Adapted from citations/sources */}
               <div id="explanation-section" className="explanation-section">
-                <h3 className="explanation-title">Công thức gốc</h3>
+                <h3 className="explanation-title">Công thức gốc</h3>
                 <div id="explanation-content">
                   {response.sources && response.sources.length > 0 ? (
                     response.sources.map((source, index) => (
@@ -161,8 +166,6 @@ export default function App() {
                 </div>
               </div>
 
-              <div id="keywords-used" className="keywords-section"></div>
-
               {/* Print Button */}
               <button onClick={() => window.print()} className="print-btn">
                 In công thức
@@ -174,11 +177,9 @@ export default function App() {
 
       {/* Footer */}
       <footer className="footer">
-        <div className="footer-citation">
-          <br />
+        <div className="footer-copyright">
+          Triển lãm Tao Ngộ & Cộng sự | 2025
         </div>
-        <div className="footer-separator"></div>
-        <div className="footer-copyright">© 2025 Digitizing Việt Nam</div>
       </footer>
     </>
   );

@@ -1,60 +1,27 @@
 /* ===================================
-   Side Cloud Patterns
-   =================================== */
-.cloud-side {
-  position: absolute;
-  width: 260px;
-  height: 120px;
-  background-image: url("/assets/background.png");
-  background-repeat: no-repeat;
-  background-size: contain;
-  z-index: -1; /* Behind content */
-  pointer-events: none;
-  opacity: 0.85;
-}
-.cloud-left {
-  left: -180px;
-  top: 10%;
-}
-.cloud-right {
-  right: -180px;
-  bottom: 10%;
-  top: auto;
-}
-@media (max-width: 1300px) {
-  .cloud-side {
-    display: none; /* Hide on smaller screens to avoid overlap/scroll */
-  }
-}
-/* ===================================
-   Footer Styles
+   Typography & CSS Reset
    =================================== */
 
-.footer {
-  margin-top: 60px;
-  padding: 32px 0 18px 0;
-  text-align: center;
-  color: #8a929b;
-  font-size: 14px;
-  background: none;
+@font-face {
+  font-family: "NomNaTong";
+  src: url("/Font/NomNaTong-Regular.ttf") format("truetype");
+  font-weight: normal;
+  font-style: normal;
 }
-.footer-citation {
-  margin-bottom: 8px;
-  line-height: 1.5;
+
+@font-face {
+  font-family: "NVN January";
+  src: url("/Font/NVNJanuary-Regular.ttf") format("truetype");
+  font-weight: normal;
+  font-style: normal;
 }
-.footer-separator {
-  width: 120px;
-  height: 1px;
-  background: #e0e0e0;
-  margin: 14px auto;
+
+@font-face {
+  font-family: "FZ-SG Attic Antique";
+  src: url("/Font/FZ-SG Attic Antique (Regular).ttf") format("truetype");
+  font-weight: normal;
+  font-style: normal;
 }
-.footer-copyright {
-  font-size: 12px;
-  margin-top: 8px;
-}
-/* ===================================
-   CSS Reset & Base Styles
-   =================================== */
 
 * {
   margin: 0;
@@ -67,71 +34,57 @@ html {
 }
 
 body {
-  font-family: "Arial Unicode MS", Arial, sans-serif;
-  background-color: #ffffff;
+  font-family: "FZ-SG Attic Antique", "Arial Unicode MS", Arial, sans-serif;
+  background-image: url("/assets/background2.png");
+  background-repeat: repeat;
+  background-size: 600px;
+  background-attachment: fixed;
   color: #000000;
-  line-height: 1.6;
+  line-height: 1.4;
   min-height: 100vh;
   overflow-x: hidden;
-}
-
-/* ===================================
-   Custom Font Definitions
-   =================================== */
-
-@font-face {
-  font-family: "NomNaTong";
-  src: url("/Font/NomNaTong-Regular.ttf") format("truetype");
-  font-weight: normal;
-  font-style: normal;
-}
-
-@font-face {
-  font-family: "1FTV Maglony";
-  src: url("/Font/1FTV-Maglony.ttf") format("truetype");
-  font-weight: normal;
-  font-style: normal;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
 .explanation-label,
 .keyword-detail,
-.keyword-citation {
-  font-family: "NomNaTong", Arial, sans-serif;
+.keyword-citation,
+.poem-output,
+.subtitle,
+label,
+input,
+button {
+  font-family: "FZ-SG Attic Antique", Arial, sans-serif;
 }
 
-.main-title {
-  font-family: "1FTV Maglony", "Times New Roman", serif;
-}
-
-/* ===================================
-   Cloud Pattern Decoration
-   =================================== */
-
-.cloud-pattern {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 350px;
-  background-image: url("/assets/background.png");
-  background-repeat: repeat-x;
-  background-position: top left;
-  background-size: auto 180%;
-  z-index: 1;
-  pointer-events: none;
-  opacity: 1;
+.main-title,
+.output-title,
+.explanation-title,
+h4 {
+  font-family: "NVN January", serif;
+  text-transform: uppercase;
 }
 
 /* ===================================
-   Main Container
+   Main Container (Paper Surface)
    =================================== */
 
 .container {
   position: relative;
   z-index: 2;
-  max-width: 1100px;
-  margin: 0 auto;
-  padding: 60px 20px 40px;
+  max-width: 850px;
+  width: 95%;
+  margin: 40px auto;
+  padding: 100px 80px;
+  background-image: url("/assets/background3.png");
+  background-size: 100% 100%;
+  background-repeat: no-repeat;
+  min-height: 1000px;
+  display: flex;
+  flex-direction: column;
+  filter: drop-shadow(0 15px 45px rgba(0, 0, 0, 0.3));
 }
 
 /* ===================================
@@ -140,24 +93,26 @@ body {
 
 .title-section {
   text-align: center;
-  margin-bottom: 50px;
-  margin-top: 240px;
+  margin-bottom: 60px;
+  padding-top: 20px;
 }
 
 .main-title {
-  font-size: 48px;
-  font-weight: bold;
+  font-size: 42px;
+  font-weight: 900;
   color: #000000;
-  margin-bottom: 20px;
-  letter-spacing: 0.5px;
+  margin-bottom: 15px;
+  letter-spacing: 0px;
+  line-height: 1.1;
 }
 
 .subtitle {
-  font-size: 15px;
-  color: #808080;
+  font-size: 16px;
+  color: #333333;
   font-weight: normal;
-  letter-spacing: 0.3px;
-  line-height: 1.5;
+  max-width: 500px;
+  margin: 0 auto;
+  line-height: 1.4;
 }
 
 /* ===================================
@@ -165,12 +120,11 @@ body {
    =================================== */
 
 .form-container {
-  background: #ffffff;
-  border-radius: 20px;
-  padding: 45px 60px 50px;
-  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
-  border: 1px solid #e8e8e8;
-  max-width: 880px;
+  background: transparent;
+  border-radius: 12px;
+  padding: 40px;
+  border: 1px solid rgba(0, 0, 0, 0.4);
+  max-width: 100%;
   margin: 0 auto 40px;
 }
 
@@ -179,52 +133,37 @@ body {
    =================================== */
 
 .form-group {
-  margin-bottom: 32px;
+  margin-bottom: 25px;
 }
 
 .form-group label {
   display: block;
-  font-size: 14px;
-  font-weight: 600;
+  font-size: 13px;
+  font-weight: bold;
   color: #000000;
-  margin-bottom: 14px;
-  letter-spacing: 0.3px;
+  margin-bottom: 10px;
 }
 
-.form-group input[type="text"],
-.form-group select {
+.form-group input[type="text"] {
   width: 100%;
-  padding: 18px 24px;
-  font-size: 15px;
-  font-family: "Arial Unicode MS", Arial, sans-serif;
-  border: 1px solid #d4d4d4;
-  border-radius: 8px;
-  background-color: #ffffff;
+  padding: 10px 15px;
+  font-size: 13px;
+  border: 1px solid rgba(0, 0, 0, 0.4);
+  border-radius: 4px;
+  background-color: rgba(255, 255, 255, 0.1);
   transition: all 0.3s ease;
   color: #000000;
 }
 
-.form-group input[type="text"]:focus,
-.form-group select:focus {
+.form-group input[type="text"]:focus {
   outline: none;
-  border-color: #999999;
-  background-color: #ffffff;
-  box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.1);
+  border-color: #000;
 }
 
 .form-group input[type="text"]::placeholder {
   color: #999999;
-  font-style: italic;
-}
-
-.form-group select {
-  cursor: pointer;
-  appearance: none;
-  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath fill='%23666' d='M1.41 0L6 4.59L10.59 0L12 1.41l-6 6l-6-6z'/%3E%3C/svg%3E");
-  background-repeat: no-repeat;
-  background-position: right 24px center;
-  background-size: 14px;
-  padding-right: 55px;
+  font-style: normal;
+  opacity: 0.6;
 }
 
 /* ===================================
@@ -233,38 +172,30 @@ body {
 
 .submit-btn {
   width: 100%;
-  padding: 20px 32px;
-  font-size: 15px;
-  font-weight: 600;
-  font-family: "Arial Unicode MS", Arial, sans-serif;
+  padding: 14px 24px;
+  font-size: 13px;
+  font-weight: normal;
   color: #ffffff;
   background-color: #000000;
   border: none;
-  border-radius: 10px;
+  border-radius: 6px;
   cursor: pointer;
   transition: all 0.2s ease;
-  margin-top: 20px;
-  letter-spacing: 0.3px;
-  position: relative;
-  overflow: hidden;
+  margin-top: 10px;
+  letter-spacing: 0.5px;
 }
 
 .submit-btn:hover {
-  background-color: #1a1a1a;
-  transform: translateY(-1px);
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+  background-color: #333333;
 }
 
 .submit-btn:active {
-  transform: translateY(0);
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+  transform: scale(0.98);
 }
 
 .submit-btn:disabled {
-  background-color: #cccccc;
+  background-color: #999999;
   cursor: not-allowed;
-  transform: none;
-  box-shadow: none;
 }
 
 /* Button Loading State */
@@ -323,55 +254,39 @@ body {
    =================================== */
 
 .output-section {
-  max-width: 880px;
-  margin: 40px auto;
-  animation: fadeIn 0.5s ease;
-}
-
-@keyframes fadeIn {
-  from {
-    opacity: 0;
-    transform: translateY(20px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
+  max-width: 100%;
+  margin: 20px auto 0;
 }
 
 .poem-container {
-  background: #ffffff;
-  border-radius: 20px;
-  padding: 50px 60px 55px;
-  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
-  border: 1px solid #e8e8e8;
+  background: transparent;
+  padding: 0;
+  box-shadow: none;
+  border: 1px solid rgba(0, 0, 0, 0.4);
+  border-radius: 12px;
+  padding: 40px;
 }
 
 .output-title {
-  font-family: "1FTV Maglony", "Times New Roman", serif;
-  font-size: 28px;
-  font-weight: normal;
+  font-size: 20px;
+  font-weight: bold;
   color: #000000;
-  margin-bottom: 35px;
-  text-align: center;
-  border-bottom: 1px solid #d4d4d4;
-  padding-bottom: 25px;
-  letter-spacing: 0.5px;
+  margin-bottom: 20px;
+  text-align: left;
+  border-bottom: none;
+  padding-bottom: 0;
 }
 
 .poem-output {
-  font-family: "Arial Unicode MS", Arial, sans-serif;
-  font-size: 17px;
-  line-height: 1.9;
+  font-size: 15px;
+  line-height: 1.5;
   color: #000000;
   white-space: pre-wrap;
   word-wrap: break-word;
-  text-align: center;
-  margin-bottom: 35px;
+  text-align: left;
+  margin-bottom: 25px;
   padding: 0;
   background-color: transparent;
-  border-radius: 0;
-  border-left: none;
 }
 
 /* ===================================
@@ -379,26 +294,24 @@ body {
    =================================== */
 
 .poem-separator {
-  width: 120px;
-  height: 1px;
-  background-color: #d4d4d4;
-  margin: 40px auto 35px;
+  width: 100%;
+  height: 0.5px;
+  background-color: rgba(0, 0, 0, 0.4);
+  margin: 25px 0;
 }
 
 .explanation-section {
-  margin-top: 40px;
-  border-top: 1px solid #d4d4d4;
-  padding-top: 35px;
+  margin-top: 25px;
+  border-top: none;
+  padding-top: 0;
 }
 
 .explanation-title {
-  font-family: "1FTV Maglony", "Times New Roman", serif;
-  font-size: 28px;
-  font-weight: normal;
+  font-size: 20px;
+  font-weight: bold;
   color: #000000;
-  text-align: center;
-  margin-bottom: 30px;
-  letter-spacing: 0.5px;
+  text-align: left;
+  margin-bottom: 15px;
 }
 .explanation-label {
   font-weight: normal;
@@ -411,45 +324,40 @@ body {
 }
 
 .keyword-item {
-  margin-bottom: 30px;
-  padding: 20px;
-  background-color: #fafafa;
-  border-radius: 12px;
-  border: 1px solid #e8e8e8;
+  margin-bottom: 15px;
+  padding: 0;
+  background-color: transparent;
+  border: none;
 }
 
 .keyword-item h4 {
-  font-size: 16px;
-  font-weight: 700;
+  font-size: 14px;
+  font-weight: bold;
   color: #000000;
-  margin-bottom: 15px;
-  text-transform: capitalize;
+  margin-bottom: 10px;
 }
 
 .keyword-detail {
-  margin-bottom: 12px;
-  line-height: 1.7;
-  font-size: 15px;
+  margin-bottom: 8px;
+  line-height: 1.4;
+  font-size: 13px;
   color: #333333;
-  font-weight: normal;
 }
 
 .keyword-detail strong {
-  color: #666666;
-  font-weight: 600;
-  opacity: 0.8;
+  color: #000;
+  font-weight: bold;
+  opacity: 1;
 }
 
 .keyword-citation {
-  margin-top: 0px;
-  margin-left: 12px;
-  padding-left: 22px;
-  border-left: 3px solid #d4a853;
-  font-style: normal;
-  color: #666666;
-  font-size: 17px;
-  line-height: 1.2;
-  background: none;
+  margin-top: 10px;
+  margin-left: 0;
+  padding-left: 0;
+  border-left: none;
+  color: #000;
+  font-size: 13px;
+  line-height: 1.4;
 }
 
 .keywords-section {
@@ -639,72 +547,71 @@ body {
   border-width: 0;
 }
 
-/* ===================================
-   Aesthetic Slider
-   =================================== */
-
 .weight-value {
-  font-weight: normal;
-  color: #666;
+  font-weight: bold;
+  color: #000;
   margin-left: 8px;
-  font-family: "Arial Unicode MS", Arial, sans-serif;
 }
 
 .slider-container {
   position: relative;
   width: 100%;
-  padding: 10px 0;
+  padding: 10px 0 30px;
 }
 
 .aesthetic-slider {
   -webkit-appearance: none;
   appearance: none;
   width: 100%;
-  height: 6px;
-  border-radius: 3px;
-  background: #e0e0e0;
+  height: 0.5px;
+  background: rgba(0, 0, 0, 0.4);
   outline: none;
-  transition: background 0.3s;
   cursor: pointer;
 }
 
 .aesthetic-slider::-webkit-slider-thumb {
   -webkit-appearance: none;
   appearance: none;
-  width: 24px;
-  height: 24px;
+  width: 14px;
+  height: 14px;
   border-radius: 50%;
   background: #000000;
   cursor: pointer;
-  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
-  transition: transform 0.2s ease, box-shadow 0.2s ease;
-  border: 2px solid #ffffff;
-}
-
-.aesthetic-slider::-webkit-slider-thumb:hover {
-  transform: scale(1.1);
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+  border: none;
 }
 
 .aesthetic-slider::-moz-range-thumb {
-  width: 24px;
-  height: 24px;
+  width: 14px;
+  height: 14px;
   border-radius: 50%;
   background: #000000;
   cursor: pointer;
-  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
-  transition: transform 0.2s ease, box-shadow 0.2s ease;
-  border: 2px solid #ffffff;
+  border: none;
 }
 
-.aesthetic-slider::-moz-range-thumb:hover {
-  transform: scale(1.1);
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+.slider-labels {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 15px;
+  padding: 0 4px;
 }
 
-.aesthetic-slider:active::-webkit-slider-thumb {
-  transform: scale(0.95);
-  background: #333333;
+.slider-label {
+  font-size: 9px;
+  color: #333;
+  position: relative;
+  width: 10px;
+  text-align: center;
+}
+
+.slider-label::before {
+  content: "";
+  position: absolute;
+  top: -15px;
+  left: 50%;
+  width: 0.5px;
+  height: 8px;
+  background: rgba(0, 0, 0, 0.4);
 }
 
 .keyword-citation {
