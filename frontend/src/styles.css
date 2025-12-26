@@ -747,8 +747,8 @@ body {
    =================================== */
 @media print {
   @page {
-    margin: 0;
-    size: A4;
+    size: 76mm 130mm;
+    margin: 3mm;
   }
 
   .title-section,
@@ -762,9 +762,9 @@ body {
 
   body {
     background-color: #fff;
-    padding: 1.5cm;
+    padding: 0;
     margin: 0;
-    font-size: 12pt;
+    font-size: 11pt; /* Slightly smaller to ensure fit */
     color: #000;
   }
 
@@ -791,61 +791,64 @@ body {
 
   .output-title {
     margin-top: 0;
-    font-size: 22px;
-    margin-bottom: 15px;
-    padding-bottom: 10px;
+    font-size: 14pt;
+    margin-bottom: 5mm;
+    padding-bottom: 2mm;
     border-bottom: 1px solid #000;
   }
 
   .poem-output {
-    font-size: 12pt;
-    line-height: 1.5;
-    margin-bottom: 20px;
+    font-size: 11pt;
+    line-height: 1.4;
+    margin-bottom: 5mm;
     text-align: justify;
   }
 
   .poem-separator {
-    margin: 20px auto;
+    margin: 4mm auto;
     background-color: #000;
+    height: 1px;
+    width: 50%;
   }
 
   .explanation-section {
-    margin-top: 20px;
-    padding-top: 15px;
+    margin-top: 5mm;
+    padding-top: 3mm;
     border-top: 1px solid #000;
     page-break-inside: avoid;
   }
 
   .explanation-title {
-    font-size: 20px;
-    margin-bottom: 15px;
+    font-size: 13pt;
+    margin-bottom: 4mm;
   }
 
   .keyword-item {
-    padding: 10px;
-    margin-bottom: 15px;
+    padding: 5px;
+    margin-bottom: 4mm;
     background-color: transparent;
     border: 1px solid #000;
-    border-radius: 8px;
+    border-radius: 4px;
     page-break-inside: avoid;
   }
 
   .keyword-item h4 {
-    font-size: 14px;
-    margin-bottom: 8px;
+    font-size: 10pt;
+    margin-bottom: 2mm;
   }
 
   .keyword-detail {
-    font-size: 12px;
-    margin-bottom: 6px;
-    line-height: 1.4;
+    font-size: 9pt;
+    margin-bottom: 1mm;
+    line-height: 1.2;
   }
 
   .keyword-citation {
-    font-size: 12pt;
-    line-height: 1.4;
-    margin-top: 8px;
-    border-left-color: #000;
+    font-size: 11pt;
+    line-height: 1.3;
+    margin-top: 2mm;
+    border-left: 2px solid #000;
+    padding-left: 3mm;
     font-style: normal;
   }
 }
