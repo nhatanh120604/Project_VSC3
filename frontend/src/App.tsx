@@ -173,12 +173,13 @@ export default function App() {
             </div>
           </div>
         )}
+
       </div>
 
-      {/* Footer */}
+      {/* Footer moved outside container */}
       <footer className="footer">
         <div className="footer-copyright">
-          Triển lãm Tao Ngộ & Cộng sự | 2025
+          Triển lãm Thơ Nôm & Công nghệ | 2025
         </div>
       </footer>
     </>

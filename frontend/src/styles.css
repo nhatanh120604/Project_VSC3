@@ -74,17 +74,32 @@ h4 {
 .container {
   position: relative;
   z-index: 2;
-  max-width: 850px;
-  width: 95%;
+  max-width: 1600px; /* Drastic increase to match Figma wide design */
+  width: 98%;
   margin: 40px auto;
-  padding: 100px 80px;
+  padding: 60px 80px 100px; /* Added more bottom padding for footer */
   background-image: url("/assets/background3.png");
   background-size: 100% 100%;
   background-repeat: no-repeat;
-  min-height: 1000px;
+  min-height: 800px;
   display: flex;
   flex-direction: column;
   filter: drop-shadow(0 15px 45px rgba(0, 0, 0, 0.3));
+}
+
+.container::before {
+  content: "";
+  position: absolute;
+  /* Soft-Edge Surgical Fill: cover holes while blending naturally */
+  top: 10px;
+  bottom: 10px;
+  left: 10px;
+  right: 10px;
+  background-color: #f6f0e4;
+  filter: blur(10px);
+  border-radius: 30px;
+  z-index: -1;
+  pointer-events: none;
 }
 
 /* ===================================
@@ -110,7 +125,7 @@ h4 {
   font-size: 16px;
   color: #333333;
   font-weight: normal;
-  max-width: 500px;
+  max-width: 1200px; /* Increased to match wider layout */
   margin: 0 auto;
   line-height: 1.4;
 }
@@ -124,6 +139,7 @@ h4 {
   border-radius: 12px;
   padding: 40px;
   border: 1px solid rgba(0, 0, 0, 0.4);
+  width: 100%; /* Force full width expansion */
   max-width: 100%;
   margin: 0 auto 40px;
 }
@@ -265,6 +281,7 @@ h4 {
   border: 1px solid rgba(0, 0, 0, 0.4);
   border-radius: 12px;
   padding: 40px;
+  width: 100%; /* Force full width expansion */
 }
 
 .output-title {
@@ -509,19 +526,22 @@ h4 {
 }
 
 /* ===================================
-   Utility Classes
+   Footer Styles (Paper Aligned)
    =================================== */
 
-.hidden {
-  display: none !important;
-}
-
-.fade-in {
-  animation: fadeIn 0.5s ease;
-}
-
-.text-center {
+.footer {
+  margin-top: 20px;
+  padding: 40px 0 60px;
   text-align: center;
+  width: 100%;
+  z-index: 3;
+}
+
+.footer-copyright {
+  font-size: 14px;
+  color: #000;
+  font-weight: bold;
+  letter-spacing: 0.5px;
 }
 
 /* ===================================
