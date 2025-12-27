@@ -688,12 +688,19 @@ h4 {
   }
 
   body {
-    background-color: #fff;
+    background-color: #fff !important;
+    background-image: none !important;
     padding: 0;
     margin: 0;
-    font-size: 6pt; /* FURTHER reduction to 6pt */
+    font-size: 6pt;
     color: #000;
     line-height: 1.1;
+    overflow: hidden; /* Prevent overflow */
+  }
+
+  /* CRITICAL FIX: Hide the paper edge fill and background images */
+  .container::before {
+    display: none !important;
   }
 
   .container {
@@ -701,6 +708,10 @@ h4 {
     margin: 0;
     max-width: 100%;
     width: 100%;
+    background: none !important;
+    min-height: auto !important; /* Reset min-height */
+    filter: none !important; /* Remove drop shadows */
+    border: none !important;
   }
 
   .output-section {
