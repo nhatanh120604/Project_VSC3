@@ -59,12 +59,12 @@ export default function App() {
           >
             {/* Emotion Input */}
             <div className="form-group">
-              <label htmlFor="emotion">Nguyên liệu cảm xúc cần chế biến</label>
+              <label htmlFor="emotion">Nguyên liệu cần chế biến (vô hình hay hữu hình)</label>
               <input
                 type="text"
                 id="emotion"
                 name="emotion"
-                placeholder="khoai lang"
+                placeholder="cô đơn, trống rỗng, nhung nhớ, thèm..."
                 aria-label="Nhập cảm xúc"
                 required
                 value={emotion}
@@ -179,7 +179,7 @@ export default function App() {
       {/* Footer moved outside container */}
       <footer className="footer">
         <div className="footer-copyright">
-          Triển lãm Thơ Nôm & Công nghệ | 2025
+          © 2025 Digitizing Việt Nam
         </div>
       </footer>
     </>
