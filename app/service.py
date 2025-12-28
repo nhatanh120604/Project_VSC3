@@ -77,6 +77,23 @@ class ContentRow:
             viewer_url=None,
         )
 
+# List of poetic imagery to randomly select from
+POETIC_IMAGERY = [
+    "gió biển",
+    "sương sớm",
+    "hơi đất ẩm",
+    "mùi lúa non",
+    "hạt mưa",
+    "hương sen",
+    "hương hoa lài",
+    "tiếng nước sôi",
+    "sao hôm",
+    "sao mai",
+    "bóng râm",
+    "tiếng kéo lưới",
+    "khúc hát ru",
+]
+
 class PoetryChefService:
     """
     Service that provides 'poetry chef' responses by picking random historical
@@ -104,7 +121,7 @@ Hướng dẫn quan trọng nhất:
 3.  **Thay thế Nguyên liệu Chính**: Tìm danh từ chỉ nguyên liệu chính trong công thức (ví dụ: Cua biển, Cá lóc, Tôm, Thịt heo...) và thay thế ĐÚNG từ đó bằng **[Cảm xúc]** của người dùng.
     -   Ví dụ: Nếu gốc là "Cua biển lựa con nào cho thiệt chắc sẽ mua", hãy viết "[Cảm xúc] lựa con nào cho thiệt chắc sẽ mua".
     -   Giữ nguyên mọi nguyên liệu phụ (muối, mắm, nước, nấm, gia vị...), hành động (rửa, băm, hầm, kho...) và các từ nối (sẽ, đoạn, rồi, thiệt...).
-4.  **Nguyên liệu Thi vị (Spontaneity)**: Để tạo sự bất ngờ và tăng tính thẩm mỹ, hãy chọn ngẫu nhiên **MỘT** "nguyên liệu thi vị giàu tính biểu tượng" (ví dụ: nước mưa, nước mắt, gió mùa đông, ánh trăng, tiếng thở dài, sương sớm, lời thề, kỷ niệm...) và khéo léo "trộn" nó vào một bước bất kỳ trong "Cách làm" mà không làm thay đổi cấu trúc câu gốc quá nhiều.
+4.  **Nguyên liệu Thi vị (Spontaneity)**: Để tạo sự bất ngờ và tăng tính thẩm mỹ, hãy sử dụng **CHÍNH XÁC** nguyên liệu sau đây: **"{random_imagery}"**. Hãy khéo léo "trộn" nó vào một bước bất kỳ trong "Cách làm" mà không làm thay đổi cấu trúc câu gốc quá nhiều.
 5.  **CẤM KỴ TUYỆT ĐỐI**:
     -   KHÔNG giải thích ý nghĩa tâm lý hay gán ghép ẩn dụ cho hành động nấu ăn.
     -   KHÔNG dùng phép so sánh (CẤM dùng: "như là", "giống như", "tựa như").
@@ -112,8 +129,8 @@ Hướng dẫn quan trọng nhất:
 
 Định dạng đầu ra:
 -   **Tên món**: [Giữ nguyên tên gốc, nhưng thay nguyên liệu tương ứng bằng Cảm xúc]
--   **Nguyên liệu**: [Cảm xúc] ([Khối lượng]), [Nguyên liệu thi vị], [Các nguyên liệu phụ liệt kê y hệt bản gốc]
--   **Cách làm**: [Chép lại toàn bộ "Nguyên văn", thay thế nguyên liệu chính bằng Cảm xúc và lồng ghép khéo léo Nguyên liệu bất ngờ vào].
+-   **Nguyên liệu**: [Cảm xúc] ([Khối lượng]), {random_imagery}, [Các nguyên liệu phụ liệt kê y hệt bản gốc]
+-   **Cách làm**: [Chép lại toàn bộ "Nguyên văn", thay thế nguyên liệu chính bằng Cảm xúc và lồng ghép khéo léo "{random_imagery}" vào].
 -   **Cách thưởng thức**: [Viết 1 câu ngắn gọn nhưng đầy tính thi vị và cảm xúc về cách dùng món ăn này].
 -   **Dựa trên**: “[Tên công thức gốc]”. [Tên báo], số [Số báo], ngày [Ngày] (Dịch sang tiếng Việt, ví dụ: May 10 -> 10 tháng 5).
 """.strip(),
@@ -179,6 +196,9 @@ Hướng dẫn quan trọng nhất:
         selected_row = random.choice(data)
         context_text = selected_row.to_text()
 
+        # Pick a random poetic imagery
+        random_imagery = random.choice(POETIC_IMAGERY)
+
         # Update temperature if requested
         previous_temperature = self.llm.temperature
         if temperature is not None:
@@ -190,6 +210,7 @@ Hướng dẫn quan trọng nhất:
                     context=context_text,
                     question=question,
                     additional_context=additional_context or "không xác định",
+                    random_imagery=random_imagery,
                 )
             )
         finally:
