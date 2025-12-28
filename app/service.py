@@ -87,9 +87,6 @@ POETIC_IMAGERY = [
     "hương sen",
     "hương hoa lài",
     "tiếng nước sôi",
-    "sao hôm",
-    "sao mai",
-    "bóng râm",
     "tiếng kéo lưới",
     "khúc hát ru",
 ]
