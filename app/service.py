@@ -84,8 +84,6 @@ POETIC_IMAGERY = [
     "hơi đất ẩm",
     "mùi lúa non",
     "hạt mưa",
-    "hương sen",
-    "hương hoa lài",
     "tiếng nước sôi",
     "tiếng kéo lưới",
     "khúc hát ru",
@@ -116,9 +114,10 @@ Hướng dẫn quan trọng nhất:
 1.  **Sao chép Nguyên văn**: Bạn phải sử dụng phần **"Nguyên văn"** trong ngữ cảnh để làm nội dung cho phần "Cách làm".
 2.  **Sát sao từng từ (Word-for-word)**: Hãy giữ nguyên gần như toàn bộ câu chữ, cấu trúc câu, và phong cách ngôn ngữ cổ của "Nguyên văn". KHÔNG được tóm tắt, KHÔNG được viết lại bằng ngôn ngữ hiện đại, KHÔNG được bỏ bớt chi tiết.
 3.  **Thay thế Nguyên liệu Chính**: Tìm danh từ chỉ nguyên liệu chính trong công thức (ví dụ: Cua biển, Cá lóc, Tôm, Thịt heo...) và thay thế ĐÚNG từ đó bằng **[Cảm xúc]** của người dùng.
-    -   Ví dụ: Nếu gốc là "Cua biển lựa con nào cho thiệt chắc sẽ mua", hãy viết "[Cảm xúc] lựa con nào cho thiệt chắc sẽ mua".
-    -   Giữ nguyên mọi nguyên liệu phụ (muối, mắm, nước, nấm, gia vị...), hành động (rửa, băm, hầm, kho...) và các từ nối (sẽ, đoạn, rồi, thiệt...).
-4.  **Nguyên liệu Thi vị (Spontaneity)**: Để tạo sự bất ngờ và tăng tính thẩm mỹ, hãy sử dụng **CHÍNH XÁC** nguyên liệu sau đây: **"{random_imagery}"**. Hãy khéo léo "trộn" nó vào một bước bất kỳ trong "Cách làm" mà không làm thay đổi cấu trúc câu gốc quá nhiều.
+    -   Ví dụ: Nếu gốc là "Cua biển lựa con nào cho thiệt chắc sẽ mua", hãy viết "[Cảm xúc] lựa nào cho thiệt chắc sẽ mua" (nếu không cần loại từ) hoặc chỉnh lại cho mượt.
+    -   **LƯU Ý CỰC KỲ QUAN TRỌNG**: Khi thay thế, hãy chú ý các loại từ đứng trước (như "con", "cái", "trái", "miếng"...). Nếu [Cảm xúc] không hợp với loại từ đó, HÃY BỎ HOẶC THAY THẾ loại từ đó để câu văn trôi chảy, tự nhiên, không bị gượng ép (ví dụ: đừng viết "một con nỗi buồn").
+    -   Giữ nguyên mọi nguyên liệu phụ, hành động và các từ nối.
+4.  **Nguyên liệu Thi vị (Spontaneity)**: Để tạo sự bất ngờ và tăng tính thẩm mỹ, hãy sử dụng **CHÍNH XÁC** nguyên liệu sau đây: **"{random_imagery}"**. Bạn chỉ được phép đưa hình ảnh này vào phần **"Cách thưởng thức"**. TUYỆT ĐỐI KHÔNG được đưa vào phần "Cách làm".
 5.  **CẤM KỴ TUYỆT ĐỐI**:
     -   KHÔNG giải thích ý nghĩa tâm lý hay gán ghép ẩn dụ cho hành động nấu ăn.
     -   KHÔNG dùng phép so sánh (CẤM dùng: "như là", "giống như", "tựa như").
@@ -126,9 +125,9 @@ Hướng dẫn quan trọng nhất:
 
 Định dạng đầu ra:
 -   **Tên món**: [Giữ nguyên tên gốc, nhưng thay nguyên liệu tương ứng bằng Cảm xúc]
--   **Nguyên liệu**: [Cảm xúc] ([Khối lượng]), {random_imagery}, [Các nguyên liệu phụ liệt kê y hệt bản gốc]
--   **Cách làm**: [Chép lại toàn bộ "Nguyên văn", thay thế nguyên liệu chính bằng Cảm xúc và lồng ghép khéo léo "{random_imagery}" vào].
--   **Cách thưởng thức**: [Viết 1 câu ngắn gọn nhưng đầy tính thi vị và cảm xúc về cách dùng món ăn này].
+-   **Nguyên liệu**: [Cảm xúc] (có thể thêm định lượng trừu tượng hoặc giữ nguyên khối lượng nếu thấy thú vị), [Các nguyên liệu phụ liệt kê y hệt bản gốc]
+-   **Cách làm**: [Chép lại toàn bộ "Nguyên văn", thay thế nguyên liệu chính bằng Cảm xúc. Chú ý sửa đổi từ ngữ kết nối/loại từ cho mượt mà].
+-   **Cách thưởng thức**: [Viết 1 câu ngắn gọn, thi vị về cách dùng món này, và PHẢI lồng ghép hình ảnh "{random_imagery}" vào đây].
 -   **Dựa trên**: “[Tên công thức gốc]”. [Tên báo], số [Số báo], ngày [Ngày] (Dịch sang tiếng Việt, ví dụ: May 10 -> 10 tháng 5).
 """.strip(),
                 ),
